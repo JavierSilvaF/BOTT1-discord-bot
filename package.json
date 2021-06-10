@@ -1,26 +1,28 @@
 {
-  "name": "bott1reloadedd",
+  "name": "bott1-discord-bot",
   "version": "1.0.0",
-  "description": "Discord Boty",
+  "description": "Discord Bot",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Chespi",
-  "license": "ISC",
-  "dependencies": {
-    "@discordjs/opus": "^0.5.0",
-    "discord.js": "^12.5.3"
-  },
-  "engines": {
-    "node": "12.14.1",
-    "npm": "6.13.4",
-    "distube": "2.8.15",
-    "ytdl": "",
-    "ffmpeg": "2.8.15"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/javiersilvaf/BOTT1-discord-bot.git"
+    "url": "git+https://github.com/JavierSilvaF/BOTT1-discord-bot.git"
+  },
+  "author": "JavierSilvaF",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JavierSilvaF/BOTT1-discord-bot/issues"
+  },
+  "homepage": "https://github.com/JavierSilvaF/BOTT1-discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "distube": "^2.8.15",
+    "ffmpeg": "0.0.4"
+  },
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
   }
 }
