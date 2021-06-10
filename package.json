@@ -14,7 +14,10 @@
   },
   "engines": {
     "node": "12.14.1",
-    "npm": "6.13.4"
+    "npm": "6.13.4",
+    "distube": "2.8.15",
+    "ytdl": "",
+    "ffmpeg": "2.8.15"
   },
   "repository": {
     "type": "git",
