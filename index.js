@@ -13,15 +13,12 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
+//initial setup
 client.on("error", console.error);
-
-client.on('ready', () => {
+client.once('ready', () => {
     console.log('Beep Beep');
+    client.user.setActivity('con mis bolas | !play',{type: 'PLAYING'});
 });
-
-client.once('ready',() => {
-        client.user.setActivity('con mis bolas | !play',{type: 'PLAYING'});
-})
 
 client.on("message", async message => {
 
@@ -29,9 +26,7 @@ client.on("message", async message => {
     if(message.channel.type === 'dm') return;
     if(message.content.startsWith(prefix)){
         const args = message.content.slice(prefix.length).trim().split(/ +/);
-        
         const command = args.shift().toLowerCase();
-
         if(!client.commands.has(command)) return;
 
         try{
@@ -48,7 +43,6 @@ const player = new distube(client);
 player.on('playSong', (message, queue, song) => {
     message.channel.send(`Esta sonando: ${song.name}!`)
 })
-
 client.player = player;
 
 client.login(token);
