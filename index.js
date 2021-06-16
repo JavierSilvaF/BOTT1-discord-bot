@@ -21,7 +21,6 @@ client.once('ready', () => {
 });
 
 client.on("message", async message => {
-
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
     if(message.content.startsWith(prefix)){
@@ -38,7 +37,7 @@ client.on("message", async message => {
 })
 
 const distube = require('distube');
-const player = new distube(client);
+const player = new distube(client, { searchSongs: false, emitNewSongOnly: true });
 
 player.on('playSong', (message, queue, song) => {
     message.channel.send(`Esta sonando: ${song.name}!`)
