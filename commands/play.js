@@ -8,7 +8,6 @@ module.exports = {
         let search = args.join(" ");
 
         if(!search) return message.channel.send('Please provide a search query');
-
         client.player.play(message, search)
     }
 }
