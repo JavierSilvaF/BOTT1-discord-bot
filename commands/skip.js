@@ -4,9 +4,8 @@ module.exports = {
     name: "skip",
     description: "Skips the current song",
 
-    async run (client, message, args, channelID) {
+    async run (client, message, args, lastMsg) {
         if(!message.member.voice.channel) return message.channel.send("Please join a voice channel first!");
-
 //        channel.fetchMessages(channelID)
 //       .then(fetchedMessages => {
 //        const messagesToDelete = fetchedMessages.filter(msg => !(msg.author.id === '789242180031873034' && msg.content.includes('Esta Sonando:')));
@@ -19,7 +18,8 @@ module.exports = {
 //                break
 //            }
 //        }
-
+//        client.commands.get('delete').run(client, message, lastMsg)
+//        .then(console.log('Message Deleted Successfully'))
         client.player.skip(message);
     }
 }//skip
