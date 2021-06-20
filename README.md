@@ -1,6 +1,4 @@
-## BOTT1-discord-bot
-
-
+# BOTT1-discord-bot
 ## WIP
 ### Embed Message
 DONE
@@ -9,5 +7,9 @@ DONE
 https://support.discord.com/hc/en-us/articles/1500012250861-Bots-Buttons
 https://discord.com/developers/docs/interactions/message-components
 DONE
-ADD AUTOPLAY BUTTON
-## !p - !play
+
+### !p - !play
+
+### Add playlist command
+### Limit queue to 10 results, implement groovy style queue
+###     - Make an Embed for the !queue command

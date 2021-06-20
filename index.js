@@ -13,6 +13,8 @@ const commandFiles = readdirSync(join(__dirname, "commands")).filter(file => fil
 const disbut = require('discord-buttons');
 disbut(client);
 
+const distube = require('distube');
+player = new distube(client, { leaveOnFinish: true , emitNewSongOnly: true});
 
 for (const file of commandFiles) {
     const command = require(join(__dirname, "commands", `${file}`));
@@ -42,9 +44,6 @@ client.on("message", async message => {
     }
 })
 
-const distube = require('distube');
-player = new distube(client, { leaveOnFinish: true , emitNewSongOnly: true});
-
 //Print Out the Currently Playing EMBED
 player.on("playSong", (message, queue, song) => {
     try{
@@ -56,8 +55,8 @@ player.on("playSong", (message, queue, song) => {
 })
 
 client.on('clickButton', async (button) => {
+    await button.defer()
     message = button.message;
-
     switch(String(button.id)){
         case "clickResume":
             message.content = '!resume'
