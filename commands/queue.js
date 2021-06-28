@@ -14,5 +14,7 @@ module.exports = {
         message.channel.send(`Current queue:\n'` + queue.songs.map((song, id) =>
         `\**${id+1}**) ${song.name} - \`${song.formattedDuration}\``
         ).join("\n"));
+    
+        
     }
 }

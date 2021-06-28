@@ -14,6 +14,7 @@ const disbut = require('discord-buttons');
 disbut(client);
 
 const distube = require('distube');
+const skip = require('./commands/skip');
 player = new distube(client, { leaveOnFinish: true , emitNewSongOnly: true});
 
 for (const file of commandFiles) {
@@ -27,7 +28,6 @@ client.once('ready', () => {
     console.log('Beep Beep');
     client.user.setActivity('con mis bolas | !play',{type: 'PLAYING'});
 });
-
 
 client.on("message", async message => {
     if(message.author.bot) return;
@@ -45,18 +45,16 @@ client.on("message", async message => {
 })
 
 //Print Out the Currently Playing EMBED
-player.on("playSong", (message, queue, song) => {
-    try{
+lastMsgID = player.on("playSong", (message, queue, song) => {
         lastMsg = client.commands.get('embed').run(client, message, song)
-        .then(lastMsg => console.log('let ' + lastMsg))
-    } catch(error){
-        console.error(error)
-    }
+        .then(lastMsg => console.log('let: ' + lastMsg))
 })
 
 client.on('clickButton', async (button) => {
     await button.defer()
     message = button.message;
+    console.log('button:' + lastMsgID);
+
     switch(String(button.id)){
         case "clickResume":
             message.content = '!resume'
@@ -71,8 +69,13 @@ client.on('clickButton', async (button) => {
         break;
 
         case "clickSkip":
+            message.content = '!resume'
+            console.log(message.content);
+            client.commands.get('resume').run(client, message);
+
             message.content = '!skip'
-            client.commands.get('skip').run(client, message);
+            console.log(message.content);
+            client.commands.get('skip').run(client, message)
         break;
 
         case "clickQueue":
@@ -85,7 +88,6 @@ client.on('clickButton', async (button) => {
             client.commands.get('autoplay').run(client, message);
         break;
     }
-
 });
 
 client.player = player
