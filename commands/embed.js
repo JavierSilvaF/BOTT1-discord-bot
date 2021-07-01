@@ -63,7 +63,7 @@ module.exports = {
         .addComponent(buttonQueue)
         .addComponent(buttonAutoplay)
 
-        var sent = await message.channel.send({
+        sent = await message.channel.send({
             embed : playEmbed,
             component: buttonAR
         })

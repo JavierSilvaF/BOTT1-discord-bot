@@ -45,15 +45,17 @@ client.on("message", async message => {
 })
 
 //Print Out the Currently Playing EMBED
-lastMsgID = player.on("playSong", (message, queue, song) => {
+player.on("playSong", (message, queue, song) => {
         lastMsg = client.commands.get('embed').run(client, message, song)
         .then(lastMsg => console.log('let: ' + lastMsg))
 })
 
+
 client.on('clickButton', async (button) => {
     await button.defer()
     message = button.message;
-    console.log('button:' + lastMsgID);
+    skipmessage = sent.id;
+    console.log('button:' + skipmessage);
 
     switch(String(button.id)){
         case "clickResume":
@@ -75,7 +77,7 @@ client.on('clickButton', async (button) => {
 
             message.content = '!skip'
             console.log(message.content);
-            client.commands.get('skip').run(client, message)
+            client.commands.get('skip').run(client, message, skipmessage)
         break;
 
         case "clickQueue":
