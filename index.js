@@ -44,19 +44,30 @@ client.on("message", async message => {
     }
 })
 
-//Print Out the Currently Playing EMBED
-player.on("playSong", (message, queue, song) => {
-        lastMsg = client.commands.get('embed').run(client, message, song)
-        .then(lastMsg => console.log('let: ' + lastMsg))
+
+//Print Out the List Playing EMBED
+player.on("playList", (message, queue, song) => {
+    lastList = client.commands.get('listembed').run(client, message, song)
 })
 
+//Print Out the Currently Playing EMBED
+player.on("playSong", (message, queue, song) => {
+    lastMsg = client.commands.get('embed').run(client, message, song)
+})
+
+//Print out added song to the queue
+player.on("addSong", (message, queue, song) => {
+    try{
+        client.commands.get('addedembed').run(message, queue, song)
+    } catch(error){
+        console.error(error)
+    }
+})
 
 client.on('clickButton', async (button) => {
     await button.defer()
     message = button.message;
-    skipmessage = sent.id;
-    console.log('button:' + skipmessage);
-
+ 
     switch(String(button.id)){
         case "clickResume":
             message.content = '!resume'
@@ -76,19 +87,54 @@ client.on('clickButton', async (button) => {
             client.commands.get('resume').run(client, message);
 
             message.content = '!skip'
+            skipmessage = sent.id;
             console.log(message.content);
             client.commands.get('skip').run(client, message, skipmessage)
         break;
 
         case "clickQueue":
             message.content = '!queue'
-            client.commands.get('queue').run(client, message);
+            queueIndex = 4;
+            client.commands.get('queue').run(client, message, queueIndex);
         break;
 
         case "clickAutoplay":
             message.content = '!autoplay'
             client.commands.get('autoplay').run(client, message);
         break;
+
+        case "clickFirst":
+            message.content = '!queue'
+            queueIndex = 0;
+            skipmessage = queueMessage.id;
+            client.commands.get('delete').run(message, skipmessage);
+            client.commands.get('queue').run(client, message, queueIndex);
+        break;
+        
+        case "clickPrevious":
+            message.content = '!queue'
+            queueIndex = 1;
+            skipmessage = queueMessage.id;
+            client.commands.get('delete').run(message, skipmessage);
+            client.commands.get('queue').run(client, message, queueIndex);
+        break;
+
+        case "clickNext":
+            message.content = '!queue'
+            queueIndex = 2;
+            skipmessage = queueMessage.id;
+            client.commands.get('delete').run(message, skipmessage);
+            client.commands.get('queue').run(client, message, queueIndex);
+        break;
+        
+        case "clickLast":
+            message.content = '!queue'
+            queueIndex = 3;
+            skipmessage = queueMessage.id;
+            client.commands.get('delete').run(message, skipmessage);
+            client.commands.get('queue').run(client, message, queueIndex);
+        break;
+    
     }
 });
 

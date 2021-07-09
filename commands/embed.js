@@ -14,7 +14,7 @@ module.exports = {
         console.log(song.name,' | ' , song.formattedDuration)
 
         const playEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
+        .setColor('#ff8800')
         .setTitle(song.name)
         .setURL(song.url)
         .setAuthor('Currently Playing:', 'https://i.imgur.com/YTL30Ug.png')
@@ -67,7 +67,6 @@ module.exports = {
             embed : playEmbed,
             component: buttonAR
         })
-        console.log('inside: ' + sent.id)
         sent.delete({ timeout: dur})
         return sent.id;
 }
