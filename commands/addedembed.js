@@ -11,10 +11,10 @@ module.exports = {
         .setTitle(song.name)
         .setURL(song.url)
         .setAuthor('Added to the queue:', 'https://i.imgur.com/YTL30Ug.png')
-        .setDescription("`Duration: "+ song.formattedDuration +"` - `Requested by: "+ song.user +"`")
+        .setDescription("`Duration: "+ song.formattedDuration +"` - `Requested by: "+ song.user.username +"`")
         .setImage(song.thumbnail)
         .setTimestamp()
-        .setFooter('chespiman')
+        .setFooter('rip groovy/hydra')
 
         const buttonSkip = new disbut.MessageButton()
         .setStyle('blurple')

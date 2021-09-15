@@ -10,6 +10,7 @@ const prefix = '!';
 const commandFiles = readdirSync(join(__dirname, "commands")).filter(file => file.endsWith(".js"));
 //var lastMsg = (lastMsg === undefined) ? 0 : lastMsg;
 
+sent = 0;
 const disbut = require('discord-buttons');
 disbut(client);
 
@@ -26,7 +27,7 @@ for (const file of commandFiles) {
 client.on("error", console.error);
 client.once('ready', () => {
     console.log('Beep Beep');
-    client.user.setActivity('con mis bolas | !play',{type: 'PLAYING'});
+    client.user.setActivity('con mis bolas | !p',{type: 'PLAYING'});
 });
 
 client.on("message", async message => {
@@ -43,7 +44,6 @@ client.on("message", async message => {
         }
     }
 })
-
 
 //Print Out the List Playing EMBED
 player.on("playList", (message, queue, song) => {
@@ -86,10 +86,11 @@ client.on('clickButton', async (button) => {
             console.log(message.content);
             client.commands.get('resume').run(client, message);
 
-            message.content = '!skip'
+            message.content = '!s'
+            console.log('skip:', sent.id)
             skipmessage = sent.id;
             console.log(message.content);
-            client.commands.get('skip').run(client, message, skipmessage)
+            client.commands.get('s').run(client, message, skipmessage)
         break;
 
         case "clickQueue":
@@ -134,7 +135,6 @@ client.on('clickButton', async (button) => {
             client.commands.get('delete').run(message, skipmessage);
             client.commands.get('queue').run(client, message, queueIndex);
         break;
-    
     }
 });
 

@@ -1,5 +1,5 @@
 module.exports = {
-    name: "play",
+    name: "p",
     description: "Play a song from Youtube",
 
     async run (client, message, args) {

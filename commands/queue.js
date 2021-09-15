@@ -26,15 +26,17 @@ module.exports = {
                 if (end > queue.songs.length) end = queue.songs.length;
             break
             case 1:
-                s = s - 10
+                s = s - 20
                 if (s < 0) s = 0;
                 end = s + 10;
                 if (end > queue.songs.length) end = queue.songs.length;
             break
             case 2:
-                s = end
-                if (end > queue.songs.length) end = queue.songs.length;
-                else end = s + 10; 
+                end = s + 10;
+                if (end > queue.songs.length){
+                    end = queue.songs.length;
+                    s = end - 10}
+
             break
             case 3:
                 end = queue.songs.length;

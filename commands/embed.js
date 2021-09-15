@@ -6,6 +6,12 @@ module.exports = {
     description: "Create/Send the play Embed",
     
     async run (client, message, args) {
+        if (sent != 0){        
+            try{
+                message.channel.messages.fetch(sent.id).then(msg => msg.delete());
+            } catch {console.error}
+        }
+        
         let response = client.player.getQueue(message);
         const queue = response;
         const song = queue.songs[0];
@@ -29,7 +35,7 @@ module.exports = {
         .setImage(song.thumbnail)
         .setURL(song.url)
         .setTimestamp()
-        .setFooter('chespiman')
+        .setFooter('rip groovy/hydra :(')
 
         const buttonResume = new disbut.MessageButton()
         .setStyle('green')
@@ -67,7 +73,7 @@ module.exports = {
             embed : playEmbed,
             component: buttonAR
         })
-        sent.delete({ timeout: dur})
-        return sent.id;
-}
+        
+        return sent;
+    }
 }
