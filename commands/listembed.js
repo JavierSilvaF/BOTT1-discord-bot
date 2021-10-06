@@ -3,7 +3,7 @@ const disbut = require('discord-buttons');
 
 module.exports = {
     name: "listembed",
-    description: "Create/Send the play Embed",
+    description: "Create/Send the playlist Embed",
     
     async run (client, message,args) {
         const queue = client.player.getQueue(message);
@@ -15,7 +15,7 @@ module.exports = {
         .setColor('#ff8800')
         .setTitle('Added a New Playlist!:', 'https://i.imgur.com/YTL30Ug.png')
         .setAuthor('Currently Playing:', 'https://i.imgur.com/YTL30Ug.png')
-//        .setDescription("`First Song: "+song.name+" - Requested by: "+song.user+"`")
+        .setDescription("`First Song: "+song.name+" - Requested by: "+song.user+"`")
         .setThumbnail('https://i.imgur.com/YTL30Ug.png')
         .addFields(
             { name: 'Requested By', value: song.user},
@@ -26,7 +26,8 @@ module.exports = {
         .setImage(song.thumbnail)
         .setTimestamp()
         .setFooter('chespiman')
-
+        
+        //Buttons
         const buttonSkip = new disbut.MessageButton()
         .setStyle('blurple')
         .setLabel('Skip') 

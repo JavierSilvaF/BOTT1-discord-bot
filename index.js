@@ -1,35 +1,37 @@
+//Creating the Discord Client + Discord Buttons + Distube.
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const { token } = require('./config.json');
-const { readdirSync } = require('fs');
-const { join } = require('path');
-
-client.commands = new Discord.Collection();
-const prefix = '!';
-const commandFiles = readdirSync(join(__dirname, "commands")).filter(file => file.endsWith(".js"));
-//var lastMsg = (lastMsg === undefined) ? 0 : lastMsg;
-
-sent = 0;
 const disbut = require('discord-buttons');
 disbut(client);
+sent = 0;
 
 const distube = require('distube');
-const skip = require('./commands/skip');
 player = new distube(client, { leaveOnFinish: true , emitNewSongOnly: true});
+
+//Getting Discord Token + Discord - Buttons
+const { token } = require('./config.json');
+const { prefix } = require('./config.json');
+
+//Read Contents of a directory
+const { readdirSync } = require('fs');
+const { join } = require('path');
+client.commands = new Discord.Collection();
+const commandFiles = readdirSync(join(__dirname, "commands")).filter(file => file.endsWith(".js"));
 
 for (const file of commandFiles) {
     const command = require(join(__dirname, "commands", `${file}`));
     client.commands.set(command.name, command);
 }
 
-//initial setup
+//Initial Bot Setup
 client.on("error", console.error);
 client.once('ready', () => {
     console.log('Beep Beep');
-    client.user.setActivity('con mis bolas | !p',{type: 'PLAYING'});
+    client.user.setActivity('Dont shout at me or ill break | !p',{type: 'PLAYING'});
 });
 
+//Command Event Listener
 client.on("message", async message => {
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
@@ -45,17 +47,17 @@ client.on("message", async message => {
     }
 })
 
-//Print Out the List Playing EMBED
+//Print out the List Playing EMBED
 player.on("playList", (message, queue, song) => {
     lastList = client.commands.get('listembed').run(client, message, song)
 })
 
-//Print Out the Currently Playing EMBED
+//Print out the currently Playing EMBED
 player.on("playSong", (message, queue, song) => {
     lastMsg = client.commands.get('embed').run(client, message, song)
 })
 
-//Print out added song to the queue
+//Print out added song EMBED
 player.on("addSong", (message, queue, song) => {
     try{
         client.commands.get('addedembed').run(message, queue, song)
@@ -64,6 +66,7 @@ player.on("addSong", (message, queue, song) => {
     }
 })
 
+//Event Listener for Button Clicks
 client.on('clickButton', async (button) => {
     await button.defer()
     message = button.message;

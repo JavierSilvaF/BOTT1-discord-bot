@@ -15,7 +15,8 @@ module.exports = {
         .setImage(song.thumbnail)
         .setTimestamp()
         .setFooter('rip groovy/hydra')
-
+        
+        //Buttons
         const buttonSkip = new disbut.MessageButton()
         .setStyle('blurple')
         .setLabel('Skip') 
@@ -29,7 +30,8 @@ module.exports = {
         const buttonAR = new disbut.MessageActionRow()
         .addComponent(buttonSkip)
         .addComponent(buttonQueue)
-
+        
+        //Send Embed
         try{message.channel.send({
             embed : addedEmbed,
             component: buttonAR

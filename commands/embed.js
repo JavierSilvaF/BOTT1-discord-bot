@@ -6,19 +6,21 @@ module.exports = {
     description: "Create/Send the play Embed",
     
     async run (client, message, args) {
-        if (sent != 0){        
+        if (sent != 0){       
             try{
                 message.channel.messages.fetch(sent.id).then(msg => msg.delete());
             } catch {console.error}
         }
-        
+        //Setting the variables for the Embed.
         let response = client.player.getQueue(message);
-        const queue = response;
-        const song = queue.songs[0];
-
+        let queue = response;
+        let song = queue.songs[0];
         let dur = song.duration*1000;
+        
+        //Checking Song Information
         console.log(song.name,' | ' , song.formattedDuration)
 
+        //Creating the 'Now Playing' Embed:
         const playEmbed = new Discord.MessageEmbed()
         .setColor('#ff8800')
         .setTitle(song.name)
@@ -36,7 +38,8 @@ module.exports = {
         .setURL(song.url)
         .setTimestamp()
         .setFooter('rip groovy/hydra :(')
-
+        
+        //Buttons
         const buttonResume = new disbut.MessageButton()
         .setStyle('green')
         .setLabel('Resume') 

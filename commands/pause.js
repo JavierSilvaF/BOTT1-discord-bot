@@ -6,6 +6,7 @@ module.exports = {
         console.log(message);
         if(!message.member.voice.channel) return message.channel.send("Please join a voice channel first!");        
         
+        //Check if song is playing
         if(client.player.isPlaying(message) === true){
         //Pause the player
         client.player.pause(message)

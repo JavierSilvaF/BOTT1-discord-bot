@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const disbut = require('discord-buttons');
-let prefix = "!";
+const { prefix } = require('../config.json');
 
 module.exports = {
     name: "queue",
@@ -10,6 +10,7 @@ module.exports = {
         if(!message.member.voice.channel) return message.channel.send("Please join a voice channel first!");
         if (!message.content.startsWith(prefix)) return;
         
+        //Declaring the Queue Embed.
         let queue = client.player.getQueue(message);
         let queueEmbed = new Discord.MessageEmbed()
         .setColor('#0099ff')
@@ -18,7 +19,7 @@ module.exports = {
         .setTimestamp()
         .setFooter('chespiman')
 
-        console.log(queueIndex);
+        //Button Handler for the Queue
         switch(queueIndex){
             case 0:
                 s = 0;
@@ -86,6 +87,7 @@ module.exports = {
         .addComponent(buttonNext)
         .addComponent(buttonLast)
 
+        //Printing the Queue
         queueMessage = await message.channel.send({
                 embed : queueEmbed,
                 component: buttonQ
