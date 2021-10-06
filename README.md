@@ -1,4 +1,4 @@
-# BOTT1, a Discord bot hosted on Heroku:
+# BOTT1, a Discord bot hosted on Heroku
 ## Features:
  * Listen to music or a livestream from Youtube on your server
  * Improved interface with buttons allows users to manage the queue without having to type extra commands
