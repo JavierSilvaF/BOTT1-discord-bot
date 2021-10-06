@@ -5,7 +5,7 @@
  * Autoplay keeps the music going after the queue ends based on Youtube recommendations
 
 ## Commands:
-* P (Query) - Searches for a song/playlist on youtube and plays it on the user's channel
+* P (Query) - Searches for a song/playlist on Youtube and plays it on the user's channel
 * Queue - Displays the current queue
 * Skip - Skips the current song
 * Resume/pause - Resumes/Pauses the current song
