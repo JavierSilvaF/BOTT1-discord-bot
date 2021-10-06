@@ -12,8 +12,8 @@
 * autoplay - Toggles Autoplay On/Off (When Autoplay is on, the bot will continue to play after the queue ends, based on youtube's algorithm). 
 * stop - Stops playing the song and leaves the channel.
 
-### Sample Now Playing Message:
+### Now Playing Message:
 ![Now Playing Embed](./images/NowPlaying.png)
 
-### Sample Queue List:
+### Queue List:
 ![Queue Embed](./images/Queue.png)
