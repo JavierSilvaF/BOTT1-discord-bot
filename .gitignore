@@ -1,4 +1,4 @@
 node_modules/
-.vs/
+\.vs
 .vscode
 config.json
