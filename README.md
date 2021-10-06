@@ -9,7 +9,7 @@
 * Queue - Displays the current queue
 * Skip - Skips the current song
 * Resume/pause - Resumes/Pauses the current song
-* Autoplay - Toggles autoplay On/Off (When autoplay is on the bot will continue to play after the queue ends based on Youtube's algorithm)
+* Autoplay - Toggles autoplay On/Off (When autoplay is on, the bot will continue to play after the queue ends based on Youtube's algorithm)
 * Stop - Stops playing the song and leaves the channel
 
 ### Now Playing Message:
