@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const disbut = require('discord-buttons');
-const { prefix } = require('../config.json');
+const { prefix } = "!";
 
 module.exports = {
     name: "queue",
