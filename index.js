@@ -11,8 +11,10 @@ player = new distube(client, { leaveOnFinish: true , emitNewSongOnly: true});
 
 //Getting Discord Token + Discord - Buttons
 //const { token } = require('./config.json');
+
 const { prefix } = "!";
 const { token } =  process.env.token;
+console.log(process.env.token)
 
 //Read Contents of a directory
 const { readdirSync } = require('fs');
@@ -143,4 +145,4 @@ client.on('clickButton', async (button) => {
 });
 
 client.player = player
-client.login(token);
+client.login(process.env.token);
