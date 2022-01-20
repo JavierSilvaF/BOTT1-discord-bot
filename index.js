@@ -145,4 +145,4 @@ client.on('clickButton', async (button) => {
 });
 
 client.player = player
-client.login(process.env.token);
+client.login(token);
