@@ -14,6 +14,7 @@ player = new distube(client, { leaveOnFinish: true , emitNewSongOnly: true});
 //const { prefix } = require('./config.json');
 
 //console.log(process.env.token)
+require('dotenv').config()
 const { token } =  process.env.token;
 const { prefix } =  process.env.prefix;
 
