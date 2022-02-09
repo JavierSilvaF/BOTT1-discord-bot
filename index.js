@@ -11,12 +11,13 @@ player = new distube(client, { leaveOnFinish: true , emitNewSongOnly: true});
 
 //Getting Discord Token + Discord - Buttons
 //const { token } = require('./config.json');
+//const { prefix } = require('./config.json');
 
-const { prefix } = "!";
+//console.log(process.env.token)
 const { token } =  process.env.token;
-console.log(process.env.token)
+const { prefix } =  process.env.prefix;
 
-//Read Contents of a directory
+//Read Contents of a directory 
 const { readdirSync } = require('fs');
 const { join } = require('path');
 client.commands = new Discord.Collection();
