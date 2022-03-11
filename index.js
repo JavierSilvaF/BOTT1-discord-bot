@@ -18,6 +18,9 @@ require('dotenv').config()
 const { prefix } =  process.env.prefix;
 const { token } =  process.env.token;
 
+console.log(process.env.token);
+console.log(process.env.prefix);
+
 
 //Read Contents of a directory 
 const { readdirSync } = require('fs');
@@ -149,4 +152,4 @@ client.on('clickButton', async (button) => {
 });
 
 client.player = player
-client.login(token);
+client.login(process.env.token);
