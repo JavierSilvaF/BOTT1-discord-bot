@@ -44,8 +44,8 @@ client.on("message", async message => {
     console.log(message);
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
-    if(message.content.startsWith(prefix))  {
-        const args = message.content.slice(prefix.length).trim().split(/ +/);
+    if(message.content.startsWith(process.env.prefix))  {
+        const args = message.content.slice(process.env.prefix.length).trim().split(/ +/);
         const command = args.shift().toLowerCase();
         if(!client.commands.has(command)) return;
         try{
