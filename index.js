@@ -15,8 +15,9 @@ player = new distube(client, { leaveOnFinish: true , emitNewSongOnly: true});
 
 //console.log(process.env.token)
 require('dotenv').config()
-const { token } =  process.env.token;
 const { prefix } =  process.env.prefix;
+const { token } =  process.env.token;
+
 
 //Read Contents of a directory 
 const { readdirSync } = require('fs');
@@ -75,7 +76,7 @@ player.on("addSong", (message, queue, song) => {
 client.on('clickButton', async (button) => {
     await button.defer()
     message = button.message;
- 
+
     switch(String(button.id)){
         case "clickResume":
             message.content = '!resume'
@@ -108,6 +109,7 @@ client.on('clickButton', async (button) => {
         break;
 
         case "clickAutoplay":
+            console.log('autop:', sent.id)
             message.content = '!autoplay'
             client.commands.get('autoplay').run(client, message);
         break;

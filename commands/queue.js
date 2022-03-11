@@ -1,6 +1,5 @@
 const Discord = require('discord.js')
 const disbut = require('discord-buttons');
-const { prefix } = "!";
 
 module.exports = {
     name: "queue",
@@ -8,7 +7,6 @@ module.exports = {
     
     async run (client, message, queueIndex) {
         if(!message.member.voice.channel) return message.channel.send("Please join a voice channel first!");
-        if (!message.content.startsWith(prefix)) return;
         
         //Declaring the Queue Embed.
         let queue = client.player.getQueue(message);
