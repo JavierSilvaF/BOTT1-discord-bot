@@ -21,7 +21,6 @@ const { token } =  process.env.token;
 console.log(process.env.token);
 console.log(process.env.prefix);
 
-
 //Read Contents of a directory 
 const { readdirSync } = require('fs');
 const { join } = require('path');
@@ -37,7 +36,7 @@ for (const file of commandFiles) {
 client.on("error", console.error);
 client.once('ready', () => {
     console.log('Beep Beep');
-    client.user.setActivity('Dont shout at me or ill break | !p',{type: 'PLAYING'});
+    client.user.setActivity('Running on Heroku | !p',{type: 'PLAYING'});
 });
 
 //Command Event Listener
