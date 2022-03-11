@@ -10,16 +10,16 @@ const distube = require('distube');
 player = new distube(client, { leaveOnFinish: true , emitNewSongOnly: true});
 
 //Getting Discord Token + Discord - Buttons
-const { token } = require('./config.json');
-const { prefix } = require('./config.json');
+//const { token } = require('./config.json');
+//const { prefix } = require('./config.json');
 
 //console.log(process.env.token)
-//require('dotenv').config()
-//const { prefix } =  process.env.prefix;
-//const { token } =  process.env.token;
+require('dotenv').config()
+const { prefix } =  "!";
+const { token } =  process.env.token;
 
-console.log(token);
-console.log(prefix);
+console.log(process.env.token);
+console.log(process.env.prefix);
 
 //Read Contents of a directory 
 const { readdirSync } = require('fs');
@@ -41,7 +41,6 @@ client.once('ready', () => {
 
 //Command Event Listener
 client.on("message", async message => {
-    console.log(message)
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
     if(message.content.startsWith(prefix))  {
