@@ -41,7 +41,6 @@ client.once('ready', () => {
 
 //Command Event Listener
 client.on("message", async message => {
-    console.log(message);
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
     if(message.content.startsWith(process.env.prefix))  {
